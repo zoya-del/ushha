@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Special Surprise Just For You ✨</title>
+  
+  <!-- Tailwind CSS & Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Canvas Confetti & Lucide Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: radial-gradient(circle at 20% 20%, #ffe4e6 0%, #fff1f2 40%, #fdf2f8 80%, #fce7f3 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .font-serif-title {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .font-handwriting {
+      font-family: 'Caveat', cursive;
+    }
+
+    /* Floating Hearts Background Animation */
+    .heart-particle {
+      position: absolute;
+      bottom: -40px;
+      pointer-events: none;
+      animation: floatUp 8s linear infinite;
+      opacity: 0.5;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg) scale(0.8);
+        opacity: 0.6;
+      }
+      50% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-110vh) rotate(360deg) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    /* Glassmorphism Card Style */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 20px 50px -15px rgba(244, 63, 94, 0.15), 0 0 25px 0 rgba(251, 113, 133, 0.1);
+    }
+
+    /* Polaroid Effect */
+    .polaroid {
+      background: #ffffff;
+      padding: 14px 14px 38px 14px;
+      box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.12), 0 5px 15px rgba(244, 63, 94, 0.15);
+      transform: rotate(-2deg);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .polaroid:hover {
+      transform: rotate(0deg) scale(1.02);
+      box-shadow: 0 20px 45px -5px rgba(244, 63, 94, 0.25);
+    }
+
+    /* Hide scrollbar for memory carousel */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+
+<body class="relative flex items-center justify-center p-4 sm:p-6 min-h-screen">
+
+  <!-- Background Floating Hearts Container -->
+  <div id="hearts-container" class="fixed inset-0 pointer-events-none overflow-hidden z-0"></div>
+
+  <!-- BGM Audio Player (Soft Romantic Melody) -->
+  <audio id="bgm-music" loop preload="auto">
+    <!-- Neenga unga audio link-ah inga change pannikalam -->
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/16/audio_db6591201e.mp3?filename=romantic-piano-111162.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Top Navigation: Step Counter & Music Toggle -->
+  <header class="fixed top-4 left-0 right-0 max-w-xl mx-auto px-5 flex items-center justify-between z-50">
+    <div class="glass-card px-3.5 py-1.5 rounded-full flex items-center space-x-2 text-xs font-semibold text-rose-700 shadow-sm">
+      <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+      <span id="step-counter">Page 1 of 7</span>
+    </div>
+
+    <!-- Music Toggle Button -->
+    <button id="music-toggle" onclick="toggleMusic()" class="glass-card p-2.5 rounded-full text-rose-600 hover:text-rose-700 hover:scale-110 active:scale-95 transition flex items-center justify-center shadow-md">
+      <i id="music-icon" data-lucide="volume-x" class="w-5 h-5"></i>
+    </button>
+  </header>
+
+  <!-- Main Surprises Container -->
+  <main class="w-full max-w-md relative z-10 my-16">
+
+    <!-- ==========================================
+         PAGE 1: The Teaser & Gate
+         ========================================== -->
+    <section id="step-1" class="step-card glass-card rounded-3xl p-7 text-center relative overflow-hidden">
+      <div class="w-20 h-20 mx-auto mb-5 rounded-full bg-gradient-to-tr from-rose-200 to-pink-100 flex items-center justify-center shadow-inner">
+        <i data-lucide="sparkles" class="w-10 h-10 text-rose-500 animate-pulse"></i>
+      </div>
+      
+      <span class="text-xs uppercase tracking-widest text-rose-500 font-bold mb-2 block">For Someone Irreplaceable</span>
+      <h1 class="font-serif-title text-3xl font-bold text-gray-800 mb-3">Hey Beautiful ✨</h1>
+      
+      <p class="text-gray-600 text-sm leading-relaxed mb-6">
+        Unakaga romba special-ah oru chinna surprise journey create pannirukken. Indha digital space muzhukka unoda azhagu and happiness-kaga mattum dhaan...
+      </p>
+
+      <div class="p-3.5 bg-rose-50/80 rounded-2xl mb-7 border border-rose-100/80 flex items-center space-x-3 text-left">
+        <div class="text-2xl">🎧</div>
+        <p class="text-xs text-rose-700 font-medium leading-snug">
+          Best experience-kku, headphones podunga & feel free to turn on the music!
+        </p>
+      </div>
+
+      <button onclick="nextStep()" class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-semibold shadow-lg shadow-rose-300/50 hover:shadow-rose-400/60 transform active:scale-95 transition flex items-center justify-center space-x-2">
+        <span>Enter Your World</span>
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </button>
+    </section>
+
+    <!-- ==========================================
+         PAGE 2: The Magic of Her Smile
+         ========================================== -->
+    <section id="step-2" class="step-card glass-card rounded-3xl p-7 text-center hidden relative">
+      <span class="text-xs uppercase tracking-widest text-rose-500 font-bold mb-1 block">Chapter 01</span>
+      <h2 class="font-serif-title text-2xl font-bold text-gray-800 mb-4">That Million Dollar Smile 💫</h2>
+
+      <!-- Polaroid Frame (REPLACE WITH HER PICTURE) -->
+      <div class="polaroid mx-auto max-w-[260px] mb-5">
+        <div class="w-full h-56 bg-rose-100 rounded overflow-hidden relative group">
+          <!-- 📸 REPLACE THIS IMAGE WITH HER PHOTO URL OR LOCAL PATH -->
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" 
+               alt="Her Smile" 
+               class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-rose-500/10 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+            <span class="text-white text-xs bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm">My Sunshine ☀️</span>
+          </div>
+        </div>
+        <p class="font-handwriting text-xl text-gray-700 mt-3 text-center">"The prettiest curve on earth"</p>
+      </div>
+
+      <p class="text-gray-600 text-sm leading-relaxed mb-6 italic">
+        "En evlo periya bad day-a irundhalum, un chinna sirippula ellamae instant-ah marandhu poidum. Never stop smiling, because it lights up my entire world."
+      </p>
+
+      <div class="flex space-x-3">
+        <button onclick="prevStep()" class="w-1/3 py-3 rounded-2xl bg-rose-100 hover:bg-rose-200 text-rose-700 font-medium transition text-sm">Back</button>
+        <button onclick="nextStep()" class="w-2/3 py-3 rounded-2xl bg-gradient-to-r from-rose-500 to-pink-500 text-white font-semibold shadow-md hover:shadow-rose-300 transition text-sm flex items-center justify-center space-x-2">
+          <span>There's more...</span>
+          <i data-lucide="sparkle" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PAGE 3: What Makes You "YOU"
+         ========================================== -->
+    <section id="step-3" class="step-card glass-card rounded-3xl p-7 text-center hidden relative">
+      <span class="text-xs uppercase tracking-widest text-rose-500 font-bold mb-1 block">Chapter 02</span>
+      <h2 class="font-serif-title text-2xl font-bold text-gray-800 mb-2">What Makes You "YOU" 🌸</h2>
+      <p class="text-xs text-gray-500 mb-5">Tap each card to reveal why you're 1 in 8 billion</p>
+
+      <!-- Interactive Reveal Cards -->
+      <div class="grid grid-cols-2 gap-3 mb-6 text-left">
+        <div onclick="toggleCard(this)" class="p-4 bg-white/70 hover:bg-white border border-rose-100 rounded-2xl cursor-pointer transition shadow-sm hover:shadow-md hover:border-rose-300 group">
+          <div class="text-2xl mb-1 group-hover:scale-110 transition">💖</div>
+          <h4 class="font-semibold text-xs text-gray-800">Your Pure Heart</h4>
+          <p class="text-[11px] text-gray-500 mt-1 hidden card-details">Nee mathavangala treat panra caring nature... it's pure gold.</p>
+        </div>
+
+        <div onclick="toggleCard(this)" class="p-4 bg-white/70 hover:bg-white border border-rose-100 rounded-2xl cursor-pointer transition shadow-sm hover:shadow-md hover:border-rose-300 group">
+          <div class="text-2xl mb-1 group-hover:scale-110 transition">😤</div>
+          <h4 class="font-semibold text-xs text-gray-800">Your Cute Anger</h4>
+          <p class="text-[11px] text-gray-500 mt-1 hidden card-details">Nee kobapadumbodhu kooda romba azhaga dhaan iruka theriyuma? 🤭</p>
+        </div>
+
+        <div onclick="toggleCard(this)" class="p-4 bg-white/70 hover:bg-white border border-rose-100 rounded-2xl cursor-pointer transition shadow-sm hover:shadow-md hover:border-rose-300 group">
+          <div class="text-2xl mb-1 group-hover:scale-110 transition">🦋</div>
+          <h4 class="font-semibold text-xs text-gray-800">Your Energy</h4>
+          <p class="text-[11px] text-gray-500 mt-1 hidden card-details">Un kooda irundha en time epdi pogudhuney theriyaadhu.</p>
+        </div>
+
+        <div onclick="toggleCard(this)" class="p-4 bg-white/70 hover:bg-white border border-rose-100 rounded-2xl cursor-pointer transition shadow-sm hover:shadow-md hover:border-rose-300 group">
+          <div class="text-2xl mb-1 group-hover:scale-110 transition">👑</div>
+          <h4 class="font-semibold text-xs text-gray-800">Your Grace</h4>
+          <p class="text-[11px] text-gray-500 mt-1 hidden card-details">You carry yourself with so much strength and dignity.</p>
+        </div>
+      </div>
+
+      <div class="flex space-x-3">
+        <button onclick="prevStep()" class="w-1/3 py-3 rounded-2xl bg-rose-100 hover:bg-rose-200 text-rose-700 font-medium transition text-sm">Back</button>
+        <button onclick="nextStep()" class="w-2/3 py-3 rounded-2xl bg-gradient-to-r from-rose-500 to-pink-500 text-white font-semibold shadow-md hover:shadow-rose-300 transition text-sm flex items-center justify-center space-x-2">
+          <span>Positivity Boost</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PAGE 4: Positivity Mirror
+         ========================================== -->
+    <section id="step-4" class="step-card glass-card rounded-3xl p-7 text-center hidden relative">
+      <span class="text-xs uppercase tracking-widest text-rose-500 font-bold mb-1 block">Chapter 03</span>
+      <h2 class="font-serif-title text-2xl font-bold text-gray-800 mb-2">The Magic Mirror 🪞</h2>
+      <p class="text-xs text-gray-500 mb-5">Whenever you doubt yourself, remember this...</p>
+
+      <!-- Mirror Glow Frame -->
+      <div class="p-6 rounded-3xl bg-gradient-to-b from-rose-100/60 to-pink-50/70 border-2 border-dashed border-rose-300/80 mb-5 relative min-h-[160px] flex flex-col justify-center items-center shadow-inner">
+        <div id="affirmation-icon" class="text-3xl mb-2">✨</div>
+        <p id="affirmation-text" class="text-gray-800 font-serif-title text-base italic font-semibold px-2 transition-all duration-300">
+          "You are capable of achieving anything your heart desires. Don't ever doubt your worth."
+        </p>
+      </div>
+
+      <button onclick="cycleAffirmation()" class="mb-6 px-4 py-2 rounded-full bg-white border border-rose-200 hover:border-rose-400 text-rose-600 text-xs font-semibold shadow-sm hover:shadow transition flex items-center space-x-2 mx-auto active:scale-95">
+        <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+        <span>Tap for another reminder</span>
+      </button>
+
+      <div class="flex space-x-3">
+        <button onclick="prevStep()" class="w-1/3 py-3 rounded-2xl bg-rose-100 hover:bg-rose-200 text-rose-700 font-medium transition text-sm">Back</button>
+        <button onclick="nextStep()" class="w-2/3 py-3 rounded-2xl bg-gradient-to-r from-rose-500 to-pink-500 text-white font-semibold shadow-md hover:shadow-rose-300 transition text-sm flex items-center justify-center space-x-2">
+          <span>Our Reel</span>
+          <i data-lucide="film" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PAGE 5: Our Golden Memories Reel
+         ========================================== -->
+    <section id="step-5" class="step-card glass-card rounded-3xl p-7 text-center hidden relative">
+      <span class="text-xs uppercase tracking-widest text-rose-500 font-bold mb-1 block">Chapter 04</span>
+      <h2 class="font-serif-title text-2xl font-bold text-gray-800 mb-2">Frames of Us 🎞️</h2>
+      <p class="text-xs text-gray-500 mb-5">Some moments live in my heart rent-free</p>
+
+      <!-- Horizontal Mini Scroll Reel -->
+      <div class="flex space-x-4 overflow-x-auto pb-4 pt-1 snap-x no-scrollbar">
+        <!-- Memory 1 -->
+        <div class="min-w-[210px] snap-center bg-white p-3 rounded-2xl border border-rose-100 shadow-sm text-left">
+          <div class="w-full h-28 bg-rose-200 rounded-xl overflow-hidden mb-2">
+            <!-- 📸 REPLACE WITH MEMORY PHOTO 1 -->
+            <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover">
+          </div>
+          <span class="text-[10px] text-rose-500 font-bold uppercase tracking-wider">Memory 01</span>
+          <h4 class="font-semibold text-xs text-gray-800">The First Unforgettable Day</h4>
+          <p class="text-[11px] text-gray-500 mt-0.5">Andha naal start aana andha spark innum fresh-ah irukku.</p>
+        </div>
+
+        <!-- Memory 2 -->
+        <div class="min-w-[210px] snap-center bg-white p-3 rounded-2xl border border-rose-100 shadow-sm text-left">
+          <div class="w-full h-28 bg-rose-200 rounded-xl overflow-hidden mb-2">
+            <!-- 📸 REPLACE WITH MEMORY PHOTO 2 -->
+            <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover">
+          </div>
+          <span class="text-[10px] text-rose-500 font-bold uppercase tracking-wider">Memory 02</span>
+          <h4 class="font-semibold text-xs text-gray-800">Late Night Talks</h4>
+          <p class="text-[11px] text-gray-500 mt-0.5">Hours kani theriyama pesina memories.</p>
+        </div>
+
+        <!-- Memory 3 -->
+        <div class="min-w-[210px] snap-center bg-white p-3 rounded-2xl border border-rose-100 shadow-sm text-left">
+          <div class="w-full h-28 bg-rose-200 rounded-xl overflow-hidden mb-2">
+            <!-- 📸 REPLACE WITH MEMORY PHOTO 3 -->
+            <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover">
+          </div>
+          <span class="text-[10px] text-rose-500 font-bold uppercase tracking-wider">Memory 03</span>
+          <h4 class="font-semibold text-xs text-gray-800">Forever To Go</h4>
+          <p class="text-[11px] text-gray-500 mt-0.5">Innum neraiya memories create pannanum!</p>
+        </div>
+      </div>
+
+      <div class="flex space-x-3 mt-4">
+        <button onclick="prevStep()" class="w-1/3 py-3 rounded-2xl bg-rose-100 hover:bg-rose-200 text-rose-700 font-medium transition text-sm">Back</button>
+        <button onclick="nextStep()" class="w-2/3 py-3 rounded-2xl bg-gradient-to-r from-rose-500 to-pink-500 text-white font-semibold shadow-md hover:shadow-rose-300 transition text-sm flex items-center justify-center space-x-2">
+          <span>Quick Quiz 😜</span>
+          <i data-lucide="help-circle" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PAGE 6: Playful Quiz (Prank Runaway Button)
+         ========================================== -->
+    <section id="step-6" class="step-card glass-card rounded-3xl p-7 text-center hidden relative">
+      <span class="text-xs uppercase tracking-widest text-rose-500 font-bold mb-1 block">Chapter 05</span>
+      <h2 class="font-serif-title text-2xl font-bold text-gray-800 mb-2">Honest Question 😉</h2>
+      <p class="text-xs text-gray-500 mb-6">Oru unmaiyaana answer mattum sollunga paapom...</p>
+
+      <div class="p-5 bg-white/70 rounded-2xl border border-rose-100 mb-6">
+        <p class="font-semibold text-gray-800 text-base mb-6">"Who loves who more?" ❤️</p>
+
+        <div class="relative h-28 flex flex-col justify-center items-center">
+          <!-- Button 1: Definitely Me (The Right Answer) -->
+          <button onclick="correctQuizAnswer()" class="w-4/5 py-3 rounded-xl bg-gradient-to-r from-rose-500 to-pink-500 text-white font-bold text-sm shadow-md hover:scale-105 active:scale-95 transition">
+            Definitely Me 😌 (You)
+          </button>
+
+          <!-- Button 2: The Runaway Button (Prank) -->
+          <button id="runaway-btn" onmouseover="dodgeButton()" onclick="dodgeButton()" class="absolute bottom-0 py-2 px-6 rounded-xl bg-gray-200 text-gray-700 text-xs font-semibold transition-all duration-200">
+            You 😏 (Me)
+          </button>
+        </div>
+      </div>
+
+      <div class="flex space-x-3">
+        <button onclick="prevStep()" class="w-full py-3 rounded-2xl bg-rose-100 hover:bg-rose-200 text-rose-700 font-medium transition text-sm">Back</button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PAGE 7: Grand Finale & Love Letter
+         ========================================== -->
+    <section id="step-7" class="step-card glass-card rounded-3xl p-7 text-center hidden relative">
+      <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-rose-100 flex items-center justify-center text-rose-500">
+        <i data-lucide="heart" class="w-7 h-7 fill-rose-500 animate-bounce"></i>
+      </div>
+
+      <span class="text-xs uppercase tracking-widest text-rose-500 font-bold mb-1 block">Final Chapter</span>
+      <h2 class="font-serif-title text-2xl font-bold text-gray-800 mb-4">To My Favorite Person 💌</h2>
+
+      <!-- Letter Box -->
+      <div class="p-5 bg-white rounded-2xl border border-rose-200 shadow-sm text-left mb-6 relative overflow-hidden">
+        <div class="absolute -right-3 -top-3 text-5xl opacity-10">🌹</div>
+        <p class="font-handwriting text-xl text-gray-800 leading-relaxed mb-3">
+          Dearest Beautiful,
+        </p>
+        <p class="text-xs text-gray-600 leading-relaxed mb-3">
+          Indha digital page un azhagaiyum, nee en life-kku evlo mukkiyam nu solradhula oru 1% dhaan. No matter how tough life gets, remember that someone out here is endlessly proud of you, rooting for you, and loving you unconditionally.
+        </p>
+        <p class="text-xs text-gray-600 leading-relaxed mb-4">
+          Always stay the pure-hearted, smiling angel you are! 💖
+        </p>
+        <p class="font-handwriting text-lg text-rose-600 text-right">
+          — Forever Yours.
+        </p>
+      </div>
+
+      <!-- Send Virtual Hug via WhatsApp -->
+      <!-- 📱 REPLACE '91XXXXXXXXXX' WITH YOUR REAL PHONE NUMBER IF YOU WANT -->
+      <a href="https://wa.me/?text=I%20saw%20the%20surprise%20website!%20It%20was%20so%20sweet%20and%20beautiful%20%E2%9D%A4%EF%B8%8F%F0%9F%A5%BA" 
+         target="_blank"
+         onclick="celebrateWithConfetti()"
+         class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 text-white font-semibold shadow-lg shadow-emerald-200 flex items-center justify-center space-x-2 transform active:scale-95 transition mb-3">
+        <i data-lucide="send" class="w-4 h-4"></i>
+        <span>Send Virtual Hug (WhatsApp) 🫂</span>
+      </a>
+
+      <button onclick="goToStep(1)" class="text-xs text-rose-500 hover:underline font-medium">
+        Replay from beginning ↺
+      </button>
+    </section>
+
+  </main>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    let currentStep = 1;
+    const totalSteps = 7;
+
+    // Positive Affirmations for Step 4
+    const affirmations = [
+      { text: "\"You are stronger than any bad day that tries to pull you down.\"", icon: "💪" },
+      { text: "\"Your smile has the power to heal someone's heaviest heart.\"", icon: "✨" },
+      { text: "\"You deserve all the love, peace, and warmth in this universe.\"", icon: "🌸" },
+      { text: "\"Never doubt yourself. You are irreplaceable and deeply cherished.\"", icon: "👑" },
+      { text: "\"Take a deep breath. You are doing amazing, more than you realize.\"", icon: "🌿" }
+    ];
+    let affirmationIndex = 0;
+
+    function updateStep() {
+      // Hide all steps
+      for (let i = 1; i <= totalSteps; i++) {
+        const stepEl = document.getElementById(`step-${i}`);
+        if (stepEl) stepEl.classList.add('hidden');
+      }
+
+      // Show current step
+      const activeStep = document.getElementById(`step-${currentStep}`);
+      if (activeStep) {
+        activeStep.classList.remove('hidden');
+      }
+
+      // Update step indicator
+      document.getElementById('step-counter').innerText = `Page ${currentStep} of ${totalSteps}`;
+
+      // Trigger Confetti on Step 7
+      if (currentStep === 7) {
+        celebrateWithConfetti();
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function nextStep() {
+      if (currentStep < totalSteps) {
+        currentStep++;
+        updateStep();
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 1) {
+        currentStep--;
+        updateStep();
+      }
+    }
+
+    function goToStep(stepNumber) {
+      currentStep = stepNumber;
+      updateStep();
+    }
+
+    // Toggle Card details in Step 3
+    function toggleCard(card) {
+      const details = card.querySelector('.card-details');
+      if (details) {
+        details.classList.toggle('hidden');
+      }
+    }
+
+    // Cycle affirmations in Step 4
+    function cycleAffirmation() {
+      affirmationIndex = (affirmationIndex + 1) % affirmations.length;
+      const textEl = document.getElementById('affirmation-text');
+      const iconEl = document.getElementById('affirmation-icon');
+      
+      textEl.style.opacity = '0';
+      setTimeout(() => {
+        textEl.innerText = affirmations[affirmationIndex].text;
+        iconEl.innerText = affirmations[affirmationIndex].icon;
+        textEl.style.opacity = '1';
+      }, 200);
+    }
+
+    // Prank Runaway Button for Step 6
+    function dodgeButton() {
+      const btn = document.getElementById('runaway-btn');
+      const randomX = (Math.random() - 0.5) * 220;
+      const randomY = (Math.random() - 0.5) * 80;
+      btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    }
+
+    function correctQuizAnswer() {
+      celebrateWithConfetti();
+      alert("Hahaha correct answer! 🤭 Adhuvum unma dhaan! Next page-ku pogalaam...");
+      nextStep();
+    }
+
+    // Music Toggle
+    let isPlaying = false;
+    const bgm = document.getElementById('bgm-music');
+    const musicIcon = document.getElementById('music-icon');
+
+    function toggleMusic() {
+      if (isPlaying) {
+        bgm.pause();
+        musicIcon.setAttribute('data-lucide', 'volume-x');
+        isPlaying = false;
+      } else {
+        bgm.play().then(() => {
+          musicIcon.setAttribute('data-lucide', 'volume-2');
+          isPlaying = true;
+        }).catch(err => {
+          console.log("Audio play notice:", err);
+        });
+      }
+      lucide.createIcons();
+    }
+
+    // Floating Hearts generator
+    function spawnHearts() {
+      const container = document.getElementById('hearts-container');
+      const heartSymbols = ['💖', '🌸', '✨', '💕', '🌷'];
+      
+      for (let i = 0; i < 15; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart-particle text-xl';
+        heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+        heart.style.left = `${Math.random() * 100}vw`;
+        heart.style.animationDuration = `${6 + Math.random() * 6}s`;
+        heart.style.animationDelay = `${Math.random() * 5}s`;
+        container.appendChild(heart);
+      }
+    }
+    spawnHearts();
+
+    // Confetti burst
+    function celebrateWithConfetti() {
+      confetti({
+        particleCount: 80,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#f43f5e', '#fb7185', '#fda4af', '#e11d48']
+      });
+    }
+  </script>
+</body>
+</html>
